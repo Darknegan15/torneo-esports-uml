@@ -7,14 +7,20 @@ Análisis del problema y requisitos del sistema Antes de modelar, es fundamental
 
 Los actores son 4.
  Por un lado, los administradores que son los que crearán los torneos y sus patrocinadores, introducirán la información de partidas en el sistema y se asegurarán de que los registros sean correctos. Además, deberían dar la opción de seguir la partida en directo para los usuarios. Quizá alojando las transmisiones en alguna plataforma tipo twitch o youtube. 
+
 En segundo lugar, los jugadores. Ellos podrán registrarse y formar equipos. Uno de ellos tendrá que ser el responsable de ese equipo para que no cualquier jugador pueda unirse. Luego tan solo el jugador responsable de equipos puede incluir jugadores registrados en su equipo. Además, todos los jugadores pueden consultar la información de todos los equipos, estadísticas de jugadores y equipos, resultados de partidas terminadas o emparejamientos de partidas futuras. Además, los jugadores deben poder tener acceso a la partida en sí. Para poder entrar en ella en el momento de su partida. 
+
 En tercer lugar, el sistema. El sistema va a automatizar ciertas cosas. Cuando los administradores introducen lo sucedido en una partida, el sistema debe ser capaz de actualizar las clasificaciones de los diferentes equipos, crear enfrentamientos futuros de manera “limpia”( Sin adulteraciones) e ir actualizando las estadísticas de los jugadores. Además se encargará de velar por la no duplicidad de jugadores, equipos y torneos. 
 Por último, los usuarios. Son individuos que no juegan ni pertenecen a ningún equipo, pero que desean tener acceso a las transmisiones de las partidas y a visualizar las estadísticas e información de jugadores y equipos. 
 
 Explicación del diagrama de casos:
+
   Como ya dije antes son 4 actores. Los administradores en realidad pueden hacer de todo, pero he supuesto que el sistema automatiza cosas para que estos no lo tengan que hacer todo. 
+ 
    Los jugadores, en primer lugar, deben registrarse. El sistema comprobará si ya existe ese usuario (Nickname, mail, DNI, etc) y si no existe autorizará la creación. Una vez es jugador registrado, puede crear un equipo. Nuevamente el sistema comprueba que no existe ese equipo. Ese jugador será el administrador de ese equipo y podrá añadir a otros jugadores o quitarlos, cambiar colores, nombre, sponsors, etc. Y en última instancia borrar el equipo si así lo desea. Por supuesto un administrador también puede hacer todo esto. 
+ 
    La labor del sistema en cuanto a la gestión de jugadores y equipos se limita a comprobar que todo lo que se va creando es correcto.  No admite jugadores duplicados, no admite el mismo jugador en varios equipos, no admite equipos duplicados, estipula tamaño mínimo y máximo de un equipo , etc. Por supuesto toda esta información viene dada por los parámetros de programación al sistema. 
+ 
    Por últimos los usuarios, al igual que los jugadores y los administradores, podrán acceder a la visualización de equipos, jugadores y sus estadísticas. Emparejamientos futuros, partidas en stream, resultados pasados,  etc. Estos usuarios no tendrán ninguna capacidad de borrado o escritura sino tan solo lectura y solo de las partes que se permitan. Por ejemplo la información que tendrían de un jugador no sería toda, sino tan solo el Nickname y sus estadísticas en los juegos. Los jugadores tendrán esta misma vista del resto de los jugadores, tan solo podrán ver el perfil completo de ellos mismos. Donde podrán editar su información pero nunca sus estadísticas. Tan solo el sistema o los administradores pueden modificar las estadísticas. 
 
 Explicación del diagrama de clases:
